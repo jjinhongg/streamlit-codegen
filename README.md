@@ -1,5 +1,5 @@
 # streamlit-codegen
-A code generator web app using Streamlit
+A unit-test code generator web app using Streamlit
 
 # Unit test writing using a multi-step prompt
 
