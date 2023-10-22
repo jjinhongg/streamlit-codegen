@@ -13,7 +13,7 @@ In this repo, we use a 3-step prompt to write unit tests in Python using the fol
 3. **Execute**: Finally, we instruct GPT to write unit tests that cover the planned cases.
 
 The code example illustrates a few embellishments on the chained, multi-step prompt:
-    - Conditional branching (e.g., asking for elaboration only if the first plan is too short)
-    - The choice of different models for different steps
-    - A check that re-runs the function if the output is unsatisfactory (e.g., if the output code cannot be parsed by Python's `ast` module)
-    - Streaming output so that you can start reading the output before it's fully generated (handy for long, multi-step outputs)
+- Conditional branching (e.g., asking for elaboration only if the first plan is too short)
+- The choice of different models for different steps
+- A check that re-runs the function if the output is unsatisfactory (e.g., if the output code cannot be parsed by Python's `ast` module)
+- Streaming output so that you can start reading the output before it's fully generated (handy for long, multi-step outputs)
