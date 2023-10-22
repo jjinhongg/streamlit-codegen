@@ -1,27 +1,28 @@
 import streamlit as st
-from oalib.solutions import generate_code
+from oalib.solutions import unit_tests_from_function
 
-# Define a dictionary of code templates for each language
-code_templates = {
-    "Python": "print('{}')",
-    "JavaScript": "console.log('{}');",
-    "Java": "System.out.println('{}');",
-    "C++": 'cout << "{}" << endl;',
-}
-
-# Define the Streamlit app
 def app():
     # Set the app title
-    st.title("Code Generator")
+    st.title("Python Unit Test Generator")
 
-    # Define the input and language selection widgets
-    input_text = st.text_input("Enter input:")
-    language = st.selectbox("Select language:", list(code_templates.keys()))
+    # Introduction and guidance
+    st.write("Welcome to the Python Unit Test Generator!")
+    st.write("Input a Python function below, and this tool will generate unit tests for you.")
 
-    # Generate the code based on the user input and selected language
-    if input_text:
-        code = generate_code(input_text, language)
-        st.code(code, language=language.lower())
+    # Text area for users to input a Python function
+    function_input = st.text_area("Paste your Python function here:")
+
+    # Button to trigger the generation of the unit test
+    if st.button("Generate Unit Test"):
+        if function_input:
+            try:
+                # Use the 'unit_tests_from_function' function to generate the unit test
+                unit_test = unit_tests_from_function(function_input)
+                st.code(unit_test, language='python')
+            except Exception as e:
+                st.error(f"An error occurred: {str(e)}")
+        else:
+            st.warning("Please input a Python function to generate its unit test.")
 
 # Run the app
 if __name__ == "__main__":
